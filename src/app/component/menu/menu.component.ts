@@ -21,17 +21,15 @@ export class MenuComponent implements OnInit {
         separator: true
       },
       {
-        label: 'Documents',
+        label: 'Comunicaciones',
         items: [
           {
-            label: 'New',
+            label: 'Creacion',
             icon: 'pi pi-plus',
-            shortcut: '⌘+N'
           },
           {
-            label: 'Search',
-            icon: 'pi pi-search',
-            shortcut: '⌘+S'
+            label: 'Mis comunicaciones',
+            icon: 'pi pi-table',
           }
         ]
       },

@@ -1,0 +1,39 @@
+<div class="flex row">
+    <div>
+        <app-menu></app-menu>
+    </div>
+    <div class="card flex justify-content-center my-4 mr-4">
+        <p-card header="Creacion de memos">
+            <div class="card flex justify-content-center">
+                <p-dropdown
+                        [options]="countries"
+                        [(ngModel)]="selectedCountry"
+                        optionLabel="name"
+                        [filter]="true"
+                        filterBy="name"
+                        [showClear]="true"
+                        placeholder="Select a Country">
+                    <ng-template pTemplate="selectedItem" let-selectedOption>
+                        <div class="flex align-items-center gap-2">
+                            <img
+                                    src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                                    [class]="'flag flag-' + selectedCountry.code.toLowerCase()"
+                                    style="width: 18px" />
+                            <div>{{ selectedOption.name }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template let-country pTemplate="item">
+                        <div class="flex align-items-center gap-2">
+                            <img
+                                    src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                                    [class]="'flag flag-' + country.code.toLowerCase()"
+                                    style="width: 18px" />
+                            <div>{{ country.name }}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+            </div>
+
+        </p-card>
+    </div>
+</div>
