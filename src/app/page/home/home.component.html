@@ -1,39 +1,105 @@
-<div class="flex row">
+<div class="flex row w-full">
     <div>
         <app-menu></app-menu>
     </div>
-    <div class="card flex justify-content-center my-4 mr-4">
-        <p-card header="Creacion de memos">
-            <div class="card flex justify-content-center">
-                <p-dropdown
-                        [options]="countries"
-                        [(ngModel)]="selectedCountry"
-                        optionLabel="name"
-                        [filter]="true"
-                        filterBy="name"
-                        [showClear]="true"
-                        placeholder="Select a Country">
-                    <ng-template pTemplate="selectedItem" let-selectedOption>
-                        <div class="flex align-items-center gap-2">
-                            <img
-                                    src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
-                                    [class]="'flag flag-' + selectedCountry.code.toLowerCase()"
-                                    style="width: 18px" />
-                            <div>{{ selectedOption.name }}</div>
-                        </div>
-                    </ng-template>
-                    <ng-template let-country pTemplate="item">
-                        <div class="flex align-items-center gap-2">
-                            <img
-                                    src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
-                                    [class]="'flag flag-' + country.code.toLowerCase()"
-                                    style="width: 18px" />
-                            <div>{{ country.name }}</div>
-                        </div>
-                    </ng-template>
-                </p-dropdown>
+    <div class="card flex justify-content-center my-4 mx-4 w-full md:mr-4">
+        <p-card header="Creacion de memos" class=" min-w-72 w-full h-screen">
+            <div class="flex flex-col md:flex-row mb-3 items-center">
+                <div class="flex flex-col items-start mb-4">
+                    <label class="text-xl mb-1" for="de">De</label>
+                    <div class="card flex justify-content-center">
+                        <p-dropdown
+                                id="de"
+                                [options]="users"
+                                [(ngModel)]="selectedDe"
+                                optionLabel="nombres"
+                                [filter]="true"
+                                filterBy="apellidos"
+                                [showClear]="true"
+                                placeholder="Jhon Doe"
+                                styleClass="w-72">
+                            <ng-template pTemplate="selectedItem" let-selectedOption>
+                                <div class="flex align-items-center gap-2">
+                                    <div>{{ selectedOption.nombres }} {{ selectedOption.apellidos }}</div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-users pTemplate="item">
+                                <div class="flex align-items-center gap-2">
+                                    <div>{{ users.apellidos }}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="flex flex-col items-start mb-4">
+                    <label class="text-xl mb-1" for="para">Para</label>
+                    <div class="card flex justify-content-center">
+                        <p-dropdown
+                                id="para"
+                                [options]="users"
+                                [(ngModel)]="selectedPara"
+                                optionLabel="nombres"
+                                [filter]="true"
+                                filterBy="apellidos"
+                                [showClear]="true"
+                                placeholder="Jhon Doe"
+                                styleClass="w-72">
+                            <ng-template pTemplate="selectedItem" let-selectedOption>
+                                <div class="flex align-items-center gap-2">
+                                    <div>{{ selectedOption.nombres }} {{ selectedOption.apellidos }}</div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-users pTemplate="item">
+                                <div class="flex align-items-center gap-2">
+                                    <div>{{ users.apellidos }}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="flex flex-col items-start mb-3">
+                    <label class="text-xl mb-1" for="para">CC</label>
+                    <div class="card flex justify-content-center w-full">
+                        <p-multiSelect
+                                [options]="users"
+                                [(ngModel)]="selectedCC"
+                                placeholder="Con copia a?"
+                                optionLabel="apellidos"
+                                display="chip"
+                                [showClear]="true"
+                                styleClass="w-72"/>
+                    </div>
+                </div>
+                <div class="card flex justify-content-center flex-col mb-3">
+                    <label class="text-xl mb-1" for="para">Departamento</label>
+                    <p-dropdown
+                            [options]="departamento"
+                            [(ngModel)]="selectedDepartamento"
+                            optionLabel="nombre"
+                            placeholder="Seleccione un departamento"
+                            styleClass="w-72"/>
+                </div>
+                <div class="card flex justify-content-center flex-col mb-3">
+                    <label class="text-xl mb-1" for="para">Fecha</label>
+                    <p-calendar
+                            [(ngModel)]="fecha"
+                            dateFormat="dd-mm-yy"
+                            styleClass="w-72"
+                            placeholder="dd-mm-yy"/>
+                </div>
+                <div class="card flex justify-content-center flex-col mb-3">
+                    <label class="text-xl mb-1" for="para">Asunto</label>
+                    <textarea
+                            class="w-72"
+                            rows="5"
+                            cols="30"
+                            pInputTextarea
+                            [(ngModel)]="asunto"
+                            placeholder="Tema a tratar">
+                    </textarea>
+                </div>
+                <p-button class="mt-8" label="Iniciar Sesión" (onClick)="create()"/>
             </div>
-
         </p-card>
     </div>
 </div>
