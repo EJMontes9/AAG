@@ -8,7 +8,7 @@ export class companyInfoService{
 
 
     getDepartamentos(): Observable<any> {
-        return this._http.get('http://localhost:8080/api/departamentos').pipe(
+        return this._http.get('http://172.16.1.68:8080/api/departamentos').pipe(
             tap(departamentos => {
                 console.log(departamentos);
             })

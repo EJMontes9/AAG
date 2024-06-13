@@ -3,29 +3,56 @@ import {AvatarModule} from "primeng/avatar";
 import {MenuModule} from "primeng/menu";
 import {BadgeModule} from "primeng/badge";
 import {RippleModule} from "primeng/ripple";
-import {MenuItem} from "primeng/api";
+import {MenuItem, MessageService} from "primeng/api";
+import {CardModule} from "primeng/card";
+import {ToastModule} from "primeng/toast";
+import {PanelMenuModule} from "primeng/panelmenu";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [MenuModule, BadgeModule, RippleModule, AvatarModule],
+  imports: [
+      MenuModule,
+      BadgeModule,
+      RippleModule,
+      AvatarModule,
+      CardModule,
+      PanelMenuModule,
+      ToastModule
+  ],
+  providers: [MessageService],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 export class MenuComponent implements OnInit {
   items: MenuItem[] | undefined;
+  isMenuVisible: boolean = false;
+
+  constructor(private messageService: MessageService, private router: Router) {}
+
+  toggleMenu() {
+    this.isMenuVisible = !this.isMenuVisible;
+  }
 
   ngOnInit() {
     this.items = [
       {
-        separator: true
-      },
-      {
         label: 'Comunicaciones',
         items: [
           {
-            label: 'Creacion',
+            label: 'Creacion memos',
             icon: 'pi pi-plus',
+            command: () => {
+              this.router.navigate(['/addmemos']);
+            }
+          },
+          {
+            label: 'Creacion oficios',
+            icon: 'pi pi-plus',
+            command: () => {
+              this.router.navigate(['/addoficios']);
+            }
           },
           {
             label: 'Mis comunicaciones',
@@ -39,22 +66,16 @@ export class MenuComponent implements OnInit {
           {
             label: 'Settings',
             icon: 'pi pi-cog',
-            shortcut: '⌘+O'
           },
           {
             label: 'Messages',
             icon: 'pi pi-inbox',
-            badge: '2'
           },
           {
             label: 'Logout',
             icon: 'pi pi-sign-out',
-            shortcut: '⌘+Q'
           }
         ]
-      },
-      {
-        separator: true
       }
     ];
   }

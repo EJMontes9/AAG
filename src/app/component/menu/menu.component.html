@@ -1,9 +1,33 @@
-<div class="card md:flex justify-content-center mx-4 my-4 hidden">
-    <p-menu [model]="items" styleClass="w-full md:w-15rem">
+<div class="flex flex-row items-center h-14 w-[92vw] sm:w-[96vw] bg-white rounded-xl shadow-md relative md:hidden">
+    <label class="hamburger flex items-center ml-2 cursor-pointer" (click)="toggleMenu()">
+        <svg viewBox="0 0 32 32" class="w-6 h-6">
+            <path class="line line-top-bottom"
+                  d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+            <path class="line" d="M7 16 27 16"></path>
+        </svg>
+    </label>
+
+    <span class="flex-grow text-center font-medium text-xl text-[#0076B3]">AAG
+        <span class="text-primary text-[#9AA2AD]">INTRANET</span>
+    </span>
+    @if (isMenuVisible) {
+        <div class="absolute left-0 top-full mt-2 z-50 w-full flex justify-center">
+            <div class="card w-full">
+                <p-toast></p-toast>
+                <p-panelMenu [model]="items" styleClass="w-full md:w-80"></p-panelMenu>
+            </div>
+        </div>
+    }
+</div>
+
+
+<div class="card justify-content-center mr-4">
+    <p-menu [model]="items" styleClass="hidden md:flex flex-col w-72 h-[95vh]">
         <ng-template pTemplate="start">
             <span class="inline-flex align-items-center gap-1 px-2 py-2">
                 <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                     width="40px" height="30px" viewBox="25 40 150 140" enable-background="new 0 0 0 0" xml:space="preserve">
+                     width="40px" height="30px" viewBox="25 40 150 140" enable-background="new 0 0 0 0"
+                     xml:space="preserve">
                       <path fill="#9AA2AD" opacity="1.000000" stroke="none"
                             d="
                     M114.040771,117.055550
@@ -53,7 +77,8 @@
                       C156.111954,102.686058 160.243927,94.230728 164.558807,85.450531
                     z"/>
                 </svg>
-                <span class="font-medium text-xl text-[#0076B3]">AAG<span class="text-primary text-[#9AA2AD]">INTRANET</span></span>
+                <span class="font-medium text-xl text-[#0076B3]">AAG<span
+                        class="text-primary text-[#9AA2AD]">INTRANET</span></span>
             </span>
         </ng-template>
         <ng-template pTemplate="submenuheader" let-item>
@@ -63,17 +88,19 @@
             <a pRipple class="flex align-items-center p-menuitem-link">
                 <span [class]="item.icon"></span>
                 <span class="ml-2">{{ item.label }}</span>
-                @if (item.badge){
-                    <p-badge class="ml-auto" [value]="item.badge" />
+                @if (item.badge) {
+                    <p-badge class="ml-auto" [value]="item.badge"/>
                 }
-                @if (item.shortcut){
+                @if (item.shortcut) {
                     <span class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{{ item.shortcut }}</span>
                 }
             </a>
         </ng-template>
         <ng-template pTemplate="end">
-            <button pRipple class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-3 text-color hover:surface-200 border-noround">
-                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2" shape="circle" />
+            <button pRipple
+                    class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-3 text-color hover:surface-200 border-noround">
+                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2"
+                          shape="circle"/>
                 <span class="flex flex-col">
                     <span class="font-bold">Amy Elsner</span>
                     <span class="text-sm">Admin</span>

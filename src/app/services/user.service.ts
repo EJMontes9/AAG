@@ -7,6 +7,6 @@ export class UserService{
     private readonly _http=inject(HttpClient);
 
     getAllUser():Observable<any>{
-        return this._http.get('http://localhost:8083/api/usuarios');
+        return this._http.get('http://172.16.1.68:8083/api/usuarios');
     }
 }
