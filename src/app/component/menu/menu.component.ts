@@ -9,6 +9,7 @@ import {ToastModule} from "primeng/toast";
 import {PanelMenuModule} from "primeng/panelmenu";
 import {Router} from "@angular/router";
 import {OAuthService} from "angular-oauth2-oidc";
+import {routes} from "../../app.routes";
 
 @Component({
   selector: 'app-menu',
@@ -30,7 +31,7 @@ export class MenuComponent implements OnInit {
   items: MenuItem[] | undefined;
   isMenuVisible: boolean = false;
 
-  constructor(private messageService: MessageService, private router: Router) {}
+  constructor(private messageService: MessageService, private router: Router,private oauthService: OAuthService) {}
 
   toggleMenu() {
     this.isMenuVisible = !this.isMenuVisible;
@@ -75,13 +76,19 @@ export class MenuComponent implements OnInit {
           {
             label: 'Logout',
             icon: 'pi pi-sign-out',
-
+            command: () => {
+              this.logout();
+            }
           }
         ]
       }
     ];
   }
 
+  logout() {
+  this.oauthService.logOut();
+  this.oauthService.logoutUrl = 'http://localhost:4200/';
+}
 
 
 }
