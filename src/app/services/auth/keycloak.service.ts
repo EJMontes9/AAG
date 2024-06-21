@@ -12,12 +12,16 @@ export class KeycloakOperationService {
     return this.keycloak.isLoggedIn();
   }
 
-  logout(httpLocalhost4200: string): void {
+  logout(): void {
     this.keycloak.logout();
   }
 
   getUserProfile(): any {
     return this.keycloak.loadUserProfile();
+  }
+
+  clearToken(): void {
+    this.keycloak.clearToken();
   }
 
 }

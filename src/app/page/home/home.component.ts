@@ -45,17 +45,17 @@ export class HomeComponent implements OnInit{
     ngOnInit() {
         this.userService.getAllUser().subscribe(users => {
             this.users = users;
-            console.log(this.users)
+            //console.log(this.users)
         });
         this.companyInfoService.getDepartamentos().subscribe(departments => {
             this.departamento = departments;
-            console.log(this.departamento)
+            //console.log(this.departamento)
         });
     }
 
     create() {
-        console.log('de->',this.selectedDe  , 'para->', this.selectedPara);
-        console.log('cc->',this.selectedCC);
+        //console.log('de->',this.selectedDe  , 'para->', this.selectedPara);
+        //console.log('cc->',this.selectedCC);
     }
 
 

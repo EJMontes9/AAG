@@ -3,7 +3,11 @@ export const environment = {
     title: 'Dev',
     keycloak: {
         realm: 'dev',
-        clientId: 'spring-client-api',
-        url: 'http://localhost:9090'
+        clientId: 'angular-client',
+        url: 'http://172.16.1.68:9090'
+    },
+    ms:{
+        user: 'http://172.16.1.68:8282'
     }
+
 };

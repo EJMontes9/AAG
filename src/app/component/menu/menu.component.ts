@@ -47,7 +47,7 @@ export class MenuComponent implements OnInit {
     ngOnInit() {
         this.keyCloackService.getUserProfile().then((data: any) => {
             this.userProfile = data;
-            console.table(this.userProfile);
+            //console.table(this.userProfile);
         })
         this.items = [
             {
@@ -98,8 +98,11 @@ export class MenuComponent implements OnInit {
     }
 
     logout() {
-        this.keyCloackService.logout('http://localhost:4200');
+        this.keyCloackService.logout();
+        this.keyCloackService.clearToken();
     }
+
+
 
 
 }

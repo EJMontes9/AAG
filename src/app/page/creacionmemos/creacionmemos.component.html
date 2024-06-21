@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col items-start mb-3 md:flex-row md:items-center">
+                <div class="flex flex-col items-start mb-3 md:flex-row md:justify-between md:items-center">
                     <label class="text-xl mb-1 md:mr-3" for="cc">CC</label>
                     <div class="card flex justify-content-center w-full">
                         <p-multiSelect
@@ -73,7 +73,7 @@
                                 styleClass="w-72 md:w-96"/>
                     </div>
                 </div>
-                <div class="md:flex md:flex-row md:w-full">
+                <div class="md:flex md:flex-row md:w-full md:justify-between">
                     <div class="card flex justify-content-center flex-col mb-3 md:flex-row md:items-center">
                         <label class="text-xl mb-1 md:mr-3" for="departamento">Departamento</label>
                         <p-dropdown
@@ -108,5 +108,16 @@
                 <p-button class="mt-8" label="Crear" (onClick)="create()"/>
             </div>
         </p-card>
+        <div class="card flex justify-content-center">
+            <p-dialog header="Informacion del memo" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+                <div class="flex align-items-center gap-3 mb-5">
+                    <span></span>
+                    <p-inputGroup class="mt-1">
+                        <input type="text" pInputText placeholder="AAG-2023-000-AREA-M" [disabled]="true" />
+                        <button type="button" pButton icon="pi pi-clipboard" class="bg-white text-gray-600"></button>
+                    </p-inputGroup>
+                </div>
+            </p-dialog>
+        </div>
     </div>
 </div>
