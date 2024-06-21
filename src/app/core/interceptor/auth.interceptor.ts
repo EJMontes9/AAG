@@ -12,10 +12,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         newReuest = req.clone({
             headers: req.headers.set('Authorization', `Bearer ${oauthService.getAccessToken()}`)
         })
+        console.log('Token added to request');
     }
 
     return next(newReuest).pipe(
         catchError((err) => {
+            console.log('Error in request');
             if (err.status === 401) {
                 oauthService.logOut();
             }

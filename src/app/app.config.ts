@@ -14,6 +14,7 @@ export const authCodeFlowConfig: AuthConfig={
     tokenEndpoint: environment.KEYCLOAK_TOKEN_URL,
     redirectUri: window.location.origin,
     clientId: environment.KEYCLOAK_CLIENT_ID,
+    requireHttps: false,
     responseType: 'code',
     scope: 'openid profile',
 }

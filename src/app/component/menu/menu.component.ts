@@ -8,6 +8,7 @@ import {CardModule} from "primeng/card";
 import {ToastModule} from "primeng/toast";
 import {PanelMenuModule} from "primeng/panelmenu";
 import {Router} from "@angular/router";
+import {OAuthService} from "angular-oauth2-oidc";
 
 @Component({
   selector: 'app-menu',
@@ -74,9 +75,13 @@ export class MenuComponent implements OnInit {
           {
             label: 'Logout',
             icon: 'pi pi-sign-out',
+
           }
         ]
       }
     ];
   }
+
+
+
 }
