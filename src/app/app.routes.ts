@@ -1,15 +1,17 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {LoginComponent} from "./page/login/login.component";
 import {NotFoundComponent} from "./page/not-found/not-found.component";
-import {authGuard} from "./guards/auth.guard";
 import {HomeComponent} from "./page/home/home.component";
 import {CreacionmemosComponent} from "./page/creacionmemos/creacionmemos.component";
 import {CreacionoficiosComponent} from "./page/creacionoficios/creacionoficios.component";
+import {AuthGuard} from "./guards/auth.guard";
+import {MenuComponent} from "./component/menu/menu.component";
 
 export const routes: Routes = [
-    {path: 'Home', component: HomeComponent,canActivate: [authGuard]},
-    {path: 'addmemos', component: CreacionmemosComponent,canActivate: [authGuard]},
-    {path: 'addoficios', component: CreacionoficiosComponent,canActivate: [authGuard]},
-    {path: 'Login', component: LoginComponent},
-    {path: '**', component: NotFoundComponent},
+
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'addmemo', component: CreacionmemosComponent, canActivate: [AuthGuard]},
+  {path: 'addoficio', component: CreacionoficiosComponent, canActivate: [AuthGuard]},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'notfound', component: NotFoundComponent},
 ];
