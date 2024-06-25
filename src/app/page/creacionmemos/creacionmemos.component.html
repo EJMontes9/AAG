@@ -13,20 +13,20 @@
                                     id="de"
                                     [options]="users"
                                     [(ngModel)]="selectedDe"
-                                    optionLabel="nombres"
+                                    optionLabel="fullname"
                                     [filter]="true"
-                                    filterBy="apellidos"
+                                    filterBy="fullname"
                                     [showClear]="true"
                                     placeholder="Jhon Doe"
                                     styleClass="w-72 md:w-96">
                                 <ng-template pTemplate="selectedItem" let-selectedOption>
                                     <div class="flex align-items-center gap-2">
-                                        <div>{{ selectedOption.nombres }} {{ selectedOption.apellidos }}</div>
+                                        <div>{{ selectedOption.fullname }}</div>
                                     </div>
                                 </ng-template>
                                 <ng-template let-users pTemplate="item">
                                     <div class="flex align-items-center gap-2">
-                                        <div>{{ users.apellidos }}</div>
+                                        <div>{{ users.fullname }}</div>
                                     </div>
                                 </ng-template>
                             </p-dropdown>
@@ -39,7 +39,7 @@
                                     id="para"
                                     [options]="users"
                                     [(ngModel)]="selectedPara"
-                                    optionLabel="nombres"
+                                    optionLabel="fullname"
                                     [filter]="true"
                                     filterBy="apellidos"
                                     [showClear]="true"
@@ -47,12 +47,12 @@
                                     styleClass="w-72 md:w-96">
                                 <ng-template pTemplate="selectedItem" let-selectedOption>
                                     <div class="flex align-items-center gap-2">
-                                        <div>{{ selectedOption.nombres }} {{ selectedOption.apellidos }}</div>
+                                        <div>{{ selectedOption.fullname }}</div>
                                     </div>
                                 </ng-template>
                                 <ng-template let-users pTemplate="item">
                                     <div class="flex align-items-center gap-2">
-                                        <div>{{ users.apellidos }}</div>
+                                        <div>{{ users.fullname }}</div>
                                     </div>
                                 </ng-template>
                             </p-dropdown>
@@ -67,7 +67,7 @@
                                 [options]="users"
                                 [(ngModel)]="selectedCC"
                                 placeholder="Con copia a?"
-                                optionLabel="apellidos"
+                                optionLabel="fullname"
                                 display="chip"
                                 [showClear]="true"
                                 styleClass="w-72 md:w-96"/>
@@ -80,7 +80,7 @@
                                 id="departamento"
                                 [options]="departamento"
                                 [(ngModel)]="selectedDepartamento"
-                                optionLabel="nombre"
+                                optionLabel="name"
                                 placeholder="Seleccione un departamento"
                                 styleClass="w-72 md:w-[17rem]"/>
                     </div>
@@ -113,8 +113,9 @@
                 <div class="flex align-items-center gap-3 mb-5">
                     <span></span>
                     <p-inputGroup class="mt-1">
-                        <input type="text" pInputText placeholder="AAG-2023-000-AREA-M" [disabled]="true" />
-                        <button type="button" pButton icon="pi pi-clipboard" class="bg-white text-gray-600"></button>
+                        <input type="text" pInputText placeholder="AAG-2023-000-AREA-M" [disabled]="true"
+                               [value]="secuencialmemo" />
+                        <button type="button" pButton icon="pi pi-clipboard" class="bg-white text-gray-600" (click)="copyToClipboard()"></button>
                     </p-inputGroup>
                 </div>
             </p-dialog>

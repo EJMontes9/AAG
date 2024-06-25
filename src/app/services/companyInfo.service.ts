@@ -8,9 +8,9 @@ export class companyInfoService{
 
 
     getDepartamentos(): Observable<any> {
-        return this._http.get('http://172.16.1.68:8383/api/departamentos').pipe(
+        return this._http.get('http://172.16.1.67:8383/api/v1/departments/allactive').pipe(
             tap(departamentos => {
-                //console.log(departamentos);
+                console.log(departamentos);
             })
         );
     }

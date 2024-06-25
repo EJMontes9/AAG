@@ -3,17 +3,12 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment.dev";
 import {tap} from 'rxjs/operators';
-
+import {SequentialCreationDto} from "../models/SequentialCreationDto";
 
 @Injectable({providedIn: 'root'})
-export class UserService {
+export class ComunicationsService {
     private readonly _http = inject(HttpClient);
-
-
-    getAllUser(): Observable<any> {
-        return this._http.get(`${environment.ms.user}/api/v1/employees`)
-            .pipe(
-                tap(data => console.log(data))
-            );
+    saveComunications(secuencialCreationDto: SequentialCreationDto): Observable<any> {
+        return this._http.post(`${environment.ms.comunications}/api/v1/communications/save`, secuencialCreationDto);
     }
 }

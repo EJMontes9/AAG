@@ -3,7 +3,7 @@ import {KeycloakService} from "keycloak-angular";
 export function initializeKeycloak(keycloak: KeycloakService) {
     return () => keycloak.init({
         config: {
-            url: 'http://172.16.1.68:9090',
+            url: 'http://172.16.1.67:9090',
             realm: 'dev',
             clientId: 'angular-client',
         },
